@@ -16,7 +16,7 @@ public class MapDisplay : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                colourMap[y * width + x] = Color.Lerp(Color.black, Color.white, noiseMap[x, y]);
+                colourMap[y * width + x] = Color.Lerp(Color.black, Color.white, noiseMap[x, y]); // Responsible to map those values bettween 0.0 and 1.0 to the gray pattern
             }
         }
 
