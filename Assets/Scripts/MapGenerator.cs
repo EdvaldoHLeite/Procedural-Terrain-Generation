@@ -9,7 +9,7 @@ public class MapGenerator : MonoBehaviour
     /**
      * To not remove some pre-made code, this indicate what will be used the set of colours or the inner colors of perlin Noise
      */
-    public enum DrawMode {NoiseMap, ColourMap};
+    public enum DrawMode {NoiseMap, ColourMap, Mesh};
     public DrawMode drawMode;
 
     public int mapWidth;
@@ -55,6 +55,9 @@ public class MapGenerator : MonoBehaviour
         else if (drawMode == DrawMode.ColourMap)
         {
             mapDisplay.DrawTexture(TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
+        } else if (drawMode == DrawMode.Mesh)
+        {
+            mapDisplay.DrawMesh(MeshGenerator.GeneratorTerrainMesh(noiseMap), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
         }
     }
 
@@ -66,7 +69,7 @@ public class MapGenerator : MonoBehaviour
         } 
         if (mapHeight < 1)
         {
-            mapWidth = 1;
+            mapHeight = 1;
         }
         if (lacunarity < 1)
             lacunarity = 1;
