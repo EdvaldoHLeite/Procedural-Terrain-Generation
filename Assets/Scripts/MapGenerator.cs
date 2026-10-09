@@ -28,6 +28,11 @@ public class MapGenerator : MonoBehaviour
 
     public TerrainType[] regions;
 
+    /* This is to scale the Mesh 3D map to the same as the 2D map, but maybe will need to be removed when generating meshes for the 
+     * game, because of the scale of 1 meter as the default
+     */
+    public float meshScale = 10f;
+
     public void GenerateMap()
     {
         float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
@@ -60,7 +65,7 @@ public class MapGenerator : MonoBehaviour
             mapDisplay.DrawTexture(TextureGenerator.TextureFromColourMap(colourMap, mapChunkSize, mapChunkSize));
         } else if (drawMode == DrawMode.Mesh)
         {
-            mapDisplay.DrawMesh(MeshGenerator.GeneratorTerrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetails), TextureGenerator.TextureFromColourMap(colourMap, mapChunkSize, mapChunkSize));
+            mapDisplay.DrawMesh(MeshGenerator.GeneratorTerrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetails, meshScale), TextureGenerator.TextureFromColourMap(colourMap, mapChunkSize, mapChunkSize));
         }
     }
 
