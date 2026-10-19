@@ -20,7 +20,7 @@ public class MapGenerator : MonoBehaviour
     public DrawMode drawMode;
 
     /// <summary> Side length (width and height) of a square terrain chunk in vertices (e.g., 241). </summary>
-    public int mapChunkSize = 241;
+    public const int mapChunkSize = 241;
 
     /// <summary> 
     /// Level of Detail index (0 to 6). Determines mesh simplification step size. 
